@@ -2,25 +2,25 @@ ECHO OFF
 CLS
 :STOP
 Set propdir=D:\jenkins\jobs
-set jenkinsFuture=jenkins-slave.future.xml
-set jenkinsLegacy=jenkins-slave.legacy.xml
-set jenkinsProperty=jenkins-slave.xml
+set jenkinsFuture=jenkins-node.future.xml
+set jenkinsLegacy=jenkins-node.legacy.xml
+set jenkinsProperty=jenkins-node.xml
 
-net stop "jenkinsslave-D__jenkins_jobs"
+net stop "jenkinsnode-D__jenkins_jobs"
 
 :CHECK
 set ready=0
- 	IF EXIST %propdir%\jenkins-slave.future.xml (
+ 	IF EXIST %propdir%\jenkins-node.future.xml (
        	set ready=1
     ) ELSE (
-        ECHO WARNING: The file jenkins-slave.future.xml is missing.  This script will not work.
+        ECHO WARNING: The file jenkins-node.future.xml is missing.  This script will not work.
     )
 
- 	IF EXIST %propdir%\jenkins-slave.legacy.xml (
+ 	IF EXIST %propdir%\jenkins-node.legacy.xml (
        	set ready=2
     ) ELSE (
         set ready=0
-        ECHO WARNING: The file jenkins-slave.legacy.xml is missing.  This script will not work.
+        ECHO WARNING: The file jenkins-node.legacy.xml is missing.  This script will not work.
     )
 
 	IF %ready%==2 (
@@ -62,5 +62,5 @@ GOTO START
 
 :START
 ECHO Starting jenkins
-net start "jenkinsslave-D__jenkins_jobs"
+net start "jenkinsnode-D__jenkins_jobs"
 pause
