@@ -1,0 +1,1 @@
+(Get-Content -path D:\jenkins_V2\workspace\tomcat\build.properties).replace('${user.home}/tomcat-build-libs','D:\jenkins_V2\workspace\tomcat\tomcat-build-libs') | Set-Content -Path D:\jenkins_V2\workspace\tomcat\build.properties
